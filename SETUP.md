@@ -1,6 +1,13 @@
 # Setup
 
 1. Install [uv](https://docs.astral.sh/uv/getting-started/installation/) and Git.
+
+   On macOS, the easiest option is to use [Homebrew](https://brew.sh/) if you already have it installed.
+
+   ```bash
+   brew install uv git
+   ```
+
 2. Clone the repository and install the dependencies. `uv` creates `.venv` using Python 3.13 and the versions in `uv.lock`.
 
    ```bash
@@ -29,3 +36,17 @@
    This runs every cell in order and saves outputs back into `UVmap.ipynb`. Execution stops if a cell fails. The timeout allows 10 minutes per cell. Open the notebook in VS Code or JupyterLab to inspect the results.
 
 Figures are saved in `figures/`. Leave `RUN_TSNE = False` for the default workflow.
+
+## Analyse another gene
+
+Run the notebook through the `analyse_gene` function definition. Add a code cell below it, using the gene symbol you want to explore.
+
+```python
+cds2_summaries = analyse_gene(adata, 'CDS2')
+```
+
+Replace `CDS2` with another gene symbol present in the atlas and choose a corresponding variable name. Run the new cell. When running from the command line, save the notebook with the new cell before executing it.
+
+Each call displays a dot plot and broad/detailed cell-type tables, and saves `dotplot_CDS2.pdf` plus five `CDS2_*.csv` summaries in `figures/`. The summaries cover cell types, stage, study and sample. The function reports an error if the gene is absent from the atlas.
+
+The returned tables are also available in Python, for example `cds2_summaries['detailed']`. To save files elsewhere, pass `output_dir='another_folder'` to `analyse_gene`.
