@@ -1,0 +1,4 @@
+.venv/
+UVmap_Sathya_annotated.h5ad
+.ipynb_checkpoints/
+__pycache__/
