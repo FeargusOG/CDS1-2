@@ -58,6 +58,8 @@ cds2_summaries = analyse_gene(adata, 'CDS2')
 
 Replace `CDS2` with another gene symbol present in the atlas and choose a corresponding variable name. Run the new cell. When running from the command line, save the notebook with the new cell before executing it.
 
-Each call displays a dot plot and broad/detailed cell-type tables, and saves `dotplot_CDS2.pdf` plus five `CDS2_*.csv` summaries in `figures/`. The summaries cover cell types, stage, study and sample. The function reports an error if the gene is absent from the atlas.
+Each call displays a dot plot, an expression UMAP and broad/detailed cell-type tables, and saves `dotplot_CDS2.pdf`, `umap_CDS2.pdf` and five `CDS2_*.csv` summaries in `figures/`. The summaries cover cell types, stage, study and sample. The function reports an error if the gene is absent from the atlas.
 
 The returned tables are also available in Python, for example `cds2_summaries['detailed']`. To save files elsewhere, pass `output_dir='another_folder'` to `analyse_gene`.
+
+The expression UMAP uses the existing coordinates for all cells, including healthy references and tumour samples. Cells with no detected expression are grey, and positive cells are coloured by `log1p(expression)`. The dot plot and tables use the supplied expression values.
