@@ -3,10 +3,10 @@ name = "cds1-2"
 version = "0.1.0"
 description = "Add your description here"
 readme = "README.md"
-requires-python = ">=3.13"
+requires-python = ">=3.13,<3.14"
 dependencies = [
     "matplotlib>=3.11.2",
-    "numpy>=2.5.4",
+    "numpy>=2.3,<2.4",
     "pandas>=3.1.0",
     "scanpy>=1.12.5",
     "scipy>=1.18.1",
@@ -17,3 +17,13 @@ dev = [
     "ipykernel>=7.4.0",
     "jupyterlab>=4.6.5",
 ]
+
+[tool.uv]
+# Numba 0.62.x is the last series with Intel macOS binaries.
+constraint-dependencies = [
+    "numba>=0.62.1,<0.63",
+    # Jupyter dependency; 26.x has no Intel macOS wheels.
+    "argon2-cffi-bindings<26",
+]
+# Install pre-built wheels rather than requiring a local compiler toolchain.
+no-build = true

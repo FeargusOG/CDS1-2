@@ -21,8 +21,14 @@ Processed scRNA-seq adata: https://drive.google.com/file/d/1-aWa10ct86mHpfFyoaDg
    uv sync --locked
    ```
 
+   Intel and Apple Silicon Macs use the same Python 3.13 environment. The lockfile selects compatible NumPy, Numba and llvmlite versions, and source builds are disabled. For an existing clone, run `git pull` followed by `uv sync --locked` to apply dependency updates.
+
+   Validation covered the full default notebook on an Apple M1 and all three gene analyses using Intel Python under Rosetta on the same Mac.
+
 3. Download [UVmap_Sathya_annotated.h5ad](https://drive.google.com/file/d/1-aWa10ct86mHpfFyoaDgX-v3SJIofFSt/view?usp=sharing) (about 8.2 GB) into the repository directory, beside `UVmap.ipynb`.
 4. Run the notebook using either option below, from the repository directory.
+
+   If you open a new terminal, first return to the cloned folder with `cd ~/CDS1-2` (adjust the path if you cloned elsewhere). Run the commands below in the folder containing `pyproject.toml` and `uv.lock`.
 
    **Interactively in JupyterLab**
 
